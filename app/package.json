@@ -1,8 +1,8 @@
 {
-  "name": "app",
+  "name": "lp-api",
   "private": true,
   "version": "0.1.0",
-  "description": "A Strapi application",
+  "description": "Strapi backend for react-avancado lp app",
   "scripts": {
     "develop": "strapi develop",
     "start": "strapi start",
