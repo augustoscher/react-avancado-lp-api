@@ -49,3 +49,31 @@ Generate dump file from database:
 ```shell
 pg_dump -c --if-exists --exclude-table=strapi_administrator -h 127.0.0.1 -U strapi -d strapi -W > strapi_dump.sql
 ```
+
+## Getting data with GraphQL playground
+
+Open GraphQL playground: `http://localhost:1337/graphql`
+
+```query
+{
+  author(id:5) {
+  created_at
+  updated_at
+  name
+  role
+  description
+  published_at
+  }
+}
+```
+
+Or
+
+```query
+{
+  authors{
+    id
+    name
+  }
+}
+```
