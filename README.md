@@ -47,5 +47,5 @@ docker exec -it d5e1010362ab bash
 Generate dump file from database:
 
 ```shell
-pg_dump -c --if-exists --exclude-table-strapi_administrator -h 127.0.0.1 -U strapi -d strapi -W > strapi_dump.sql
+pg_dump -c --if-exists --exclude-table=strapi_administrator -h 127.0.0.1 -U strapi -d strapi -W > strapi_dump.sql
 ```
