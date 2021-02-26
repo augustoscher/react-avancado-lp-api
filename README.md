@@ -55,7 +55,28 @@ pg_dump -c --if-exists --exclude-table=strapi_administrator -h 127.0.0.1 -U stra
 Open GraphQL playground: `http://localhost:1337/graphql`
 
 ```query
-{
+query GET_LPS {
+  landingPage {
+    logo{
+      alternativeText
+      url
+    }
+    header{
+    	title
+      description
+    }
+  }
+  
+  authors{
+    id
+    name
+    description
+  }  
+}
+```
+
+```query
+query GET_AUTHOR {
   author(id:5) {
   created_at
   updated_at
@@ -63,17 +84,6 @@ Open GraphQL playground: `http://localhost:1337/graphql`
   role
   description
   published_at
-  }
-}
-```
-
-Or
-
-```query
-{
-  authors{
-    id
-    name
   }
 }
 ```
