@@ -84,7 +84,7 @@ fragment header on LandingPage{
 
 query GET_LANDING_PAGE {
   landingPage {
-    id
+    createdAt: created_at
     ...logo
     ...header
   }
