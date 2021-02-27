@@ -76,8 +76,8 @@ query GET_LPS {
 ```
 
 ```query
-query GET_AUTHOR {
-  author(id:5) {
+query GET_AUTHOR($id: ID!) {
+  author(id: $id) {
   created_at
   updated_at
   name
@@ -85,5 +85,13 @@ query GET_AUTHOR {
   description
   published_at
   }
+}
+```
+
+and declare query variable:
+
+```query
+{
+  "id": 5
 }
 ```
