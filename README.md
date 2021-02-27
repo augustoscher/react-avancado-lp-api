@@ -54,26 +54,44 @@ pg_dump -c --if-exists --exclude-table=strapi_administrator -h 127.0.0.1 -U stra
 
 Open GraphQL playground: `http://localhost:1337/graphql`
 
+- With fragments:
+
 ```query
-query GET_LPS {
-  landingPage {
-    logo{
-      alternativeText
+fragment imageData on UploadFile {
+  alternativeText
+  url
+}
+
+fragment logo on LandingPage {
+  logo{
+    ...imageData
+  }
+}
+
+fragment header on LandingPage{
+  header{
+    title
+    description
+    button{
+      label
       url
     }
-    header{
-    	title
-      description
+    image{
+      ...imageData
     }
   }
-  
-  authors{
+}
+
+query GET_LANDING_PAGE {
+  landingPage {
     id
-    name
-    description
-  }  
+    ...logo
+    ...header
+  }
 }
 ```
+
+- With dynamic param
 
 ```query
 query GET_AUTHOR($id: ID!) {
@@ -93,5 +111,28 @@ and declare query variable:
 ```query
 {
   "id": 5
+}
+```
+
+- Other example
+
+```query
+query GET_LPS {
+  landingPage {
+    logo{
+      alternativeText
+      url
+    }
+    header{
+    	title
+      description
+    }
+  }
+  
+  authors{
+    id
+    name
+    description
+  }  
 }
 ```
