@@ -50,9 +50,11 @@ Generate dump file from database:
 pg_dump -c --if-exists --exclude-table=strapi_administrator -h 127.0.0.1 -U strapi -d strapi -W > strapi_dump.sql
 ```
 
-## Getting data with GraphQL playground
+## Handling data with GraphQL playground
 
 Open GraphQL playground: `http://localhost:1337/graphql`
+
+### Queries
 
 - With fragments:
 
@@ -133,6 +135,50 @@ query GET_LPS {
     id
     name
     description
+  }  
+}
+```
+
+### Mutations
+
+- Named mutation
+
+```mutation
+mutation UPDATE_AUTHOR {
+  updateAuthor(
+    input: { where: { id: 4 },
+    data: { name: "Xunda" } }
+  ) {
+    author {
+      id
+      name
+      role
+    }
+  }
+}
+```
+
+- Parametrized mutation
+
+```mutation
+mutation UPDATE_AUTHOR($id: ID!, $data: editAuthorInput) {
+  updateAuthor(input: { where: { id: $id }, data: $data }) {
+    author {
+      id
+      name
+      role
+    }
+  }
+}
+```
+
+and in Query Variables:
+
+```mutation
+{
+  "id": 7,
+  "data": {
+    "name": "xunda2"
   }  
 }
 ```
