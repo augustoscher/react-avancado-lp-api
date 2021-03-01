@@ -141,6 +141,8 @@ query GET_LPS {
 
 ### Mutations
 
+#### Update
+
 - Named mutation
 
 ```mutation
@@ -183,7 +185,7 @@ and in Query Variables:
 }
 ```
 
-- Create Mutation
+#### Create Mutation
 
 ```mutation
 mutation CREATE_AUTHOR {
@@ -201,6 +203,19 @@ mutation CREATE_AUTHOR {
       name
       role
       description
+    }
+  }
+}
+```
+
+#### Delete mutation
+
+```mutation
+mutation DELETE_AUTHOR {
+  deleteAuthor(input: { where: { id: 8 } }){
+    author{
+      id
+      name
     }
   }
 }
