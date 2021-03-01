@@ -182,3 +182,26 @@ and in Query Variables:
   }  
 }
 ```
+
+- Create Mutation
+
+```mutation
+mutation CREATE_AUTHOR {
+  createAuthor(
+    input: {
+      data: {
+        name: "New Instructor"
+        role: "Instructor"
+        description: "blha blah"
+      }
+    }
+  ) {
+    author {
+      id
+      name
+      role
+      description
+    }
+  }
+}
+```
